@@ -29,6 +29,10 @@ if nargin < 3; frametype    = '.png';  end
 if nargin < 2; ofile        = 'movie'; end
 if nargin < 1; framepath    = pwd;     end
 
+% make sure to include the following for compiling
+if ischar(framerate),    eval(sprintf('framerate = %s;',framerate)),      end
+if ischar(size_percent), eval(sprintf('size_percent= %s;',size_percent)), end
+
 % check to see if the movie name exists and don't overwrite it
 orig    = ofile;
 is_file = 2;

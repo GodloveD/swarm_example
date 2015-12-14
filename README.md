@@ -5,9 +5,9 @@ This code demonstrates an example workflow for running parallel computing jobs o
 
 What’s the point?
 -----------------
-Let's just assume we want to use an algorithm to process some images.  Our algorithm loads an image, does some calculations, and saves a modified image.  (A great number of analysis jobs can be broken down into loading analyzing and saving files, so this example should be applicable to a large number of users' needs.)  Anyway, let’s assume it takes about 1 minute to analyze each image and we have 300 images to process.  If we programmed this task to run in a loop on a single machine it would take around 5 hours.  That’s inconvenient.  Now if we assume instead that we had 3,600 images (a 2 minute movie sampled at 30 frames per second) it would take 2.5 days to complete.  That’s most inconvenient.  The code will run… as long as the power doesn’t go out, or our computer doesn’t install updates and reboot, or our code is bug-free.  But if any of these conditions are not met we might have to wait another few days.  And if we have to debug our code or choose new parameters for our algorithm it might take weeks to analyze our data.  
+Let's just assume we want to use an algorithm to process some images.  Our algorithm loads an image, does some calculations, and saves a modified image.  (Many analysis jobs can be broken down into loading analyzing and saving files, so this example should be applicable to a large number of users' needs.)  Let’s assume it takes about 1 minute to analyze each image and we have 300 images to process.  If we program this task to run in a loop on a single machine it will take around 5 hours.  That’s inconvenient.  Now if we assume instead that we have 3,600 images (a 2 minute movie sampled at 30 frames per second) it will take 2.5 days to complete.  That’s most inconvenient.  The code will run… as long as the power doesn’t go out, or our computer doesn’t install updates and reboot, or our code is bug-free.  But if any of these conditions are not met we might have to wait another few days.  And if we have to debug our code or choose new parameters for our algorithm it might take weeks to analyze our data.  
 
-If we needed to analyze all the frames from a feature length film (2 hours, 216,000 frames) our algorithm will take around 5 months to finish.  In this scenario our code had better be bug-free the first time we run it.  
+If we needed to analyze all the frames from a feature length film (2 hours, 216,000 frames) our algorithm will take around 5 months to finish.  In this scenario our code MUST be bug-free the first time we run it.  
 
 The point is that parallel computing is not just a convenience.  In some cases it’s a necessity.  Parallel computing enables calculations that would otherwise be impossible.  And once you start using it, you will start to think of new analyses that you never would have dreamed of attempting previously.  
 
@@ -16,7 +16,7 @@ But why matlab?
 ---------------
 If you are a longtime matlab programmer you already know the answer to this question.  Matlab has a very powerful gui (i.e. the java virtual machine) that helps users rapidly develop and debug code.  In fact "debug mode" is often used to turn a matlab script into an interactive program, allowing the user to pause and flexibly analyze and visualize data on the fly.  Matlab has many, many algorithms and analyses built right in, or available in toolboxes so you almost never have to program things up from scratch.  Data visualization with matlab is powerful and efficient.  And finally, user's tend to build a large collection of recyclable functions and scripts allowing them to use matlab more efficiently over time.  
 
-Matlab users often do not want to throw years of work away and start from scratch in a new language.  They might not feel very comfortable stepping out onto the command line, or writing bash scripts.  In labs where matlab is heavily used they might want to pass their code to other lab mates.  The examples here are designed to help matlab users get up and running fully fledged, unlicensed, parallel matlab jobs on the NIH Biowulf cluster without investing a lot of time learning another scripting language.  Code like this can also be passed on to labmates or colleagues with virtually no experience on the Biowulf cluster, allowing them to pre-packaged parallel jobs with ease.  
+Matlab users often do not want to throw years of work away and start from scratch in a new language.  They might not feel very comfortable stepping out onto the command line, or writing bash scripts.  In labs where matlab is heavily used they might want to pass their code to other lab mates.  The examples here are designed to help matlab users get up and running fully fledged, unlicensed, parallel matlab jobs on the NIH Biowulf cluster without investing a lot of time learning another scripting language.  Code like this can also be passed on to labmates or colleagues with virtually no experience on the Biowulf cluster, allowing them to run pre-packaged parallel jobs with ease.  
 
 
 To use this example
@@ -35,7 +35,7 @@ Now open an interactive matlab session.  These examples display figures, so be s
 
 Now cd to the directory that you copied in step one.
 
->> cd ~/swarm_example/ 
+>> cd /data/$USER/swarm_example/ 
 
 
 Detailed description of the problem
